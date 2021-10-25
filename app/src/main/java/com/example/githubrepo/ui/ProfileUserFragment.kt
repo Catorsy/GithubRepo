@@ -45,6 +45,7 @@ class ProfileUserFragment : MvpAppCompatFragment(), ProfileUserView, BackButtonL
         loginProfileTextView.text = user.login
         urlProfileTextView.text = user.url.toString()
         idProfileTextView.text = user.id.toString()
+        likeCounterTextView.text = user.likes.toString()
     }
 
     override fun onDestroyView() {

@@ -44,6 +44,5 @@ class UsersRecyclerViewAdapter(private val presenter: UserListPresenter) :
         }
 
         override var pos: Int = -1
-
     }
 }
