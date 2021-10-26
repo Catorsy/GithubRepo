@@ -31,4 +31,9 @@ class AddMessageFragment : Fragment() {
 //            this.app.eventBus.post(EventBus.Event())
 //        }
     }
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
 }

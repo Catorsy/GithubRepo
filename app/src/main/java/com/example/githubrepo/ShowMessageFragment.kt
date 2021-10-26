@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.githubrepo.databinding.FragmentShowMessageBinding
-import io.reactivex.disposables.Disposable
 
 class ShowMessageFragment : Fragment() {
     private var binding: FragmentShowMessageBinding? = null
-    var myMessage = "Сообщений пока нет."
+    var myMessage = "Пока сообщений нет."
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -33,8 +32,8 @@ class ShowMessageFragment : Fragment() {
         binding?.showTextView?.text = myMessage
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(App.MESSAGE_KEY, myMessage)
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
     }
 }

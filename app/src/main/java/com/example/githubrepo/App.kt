@@ -22,5 +22,3 @@ class App : Application() {
 
 val Fragment.app: App
     get() = requireContext().applicationContext as App
-
-var myMessage = MyMessage("")
