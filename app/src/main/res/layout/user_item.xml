@@ -31,9 +31,4 @@
         android:text="@string/url"
         android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/liner_height"
-        android:background="@color/liner_yellow" />
-
 </LinearLayout>

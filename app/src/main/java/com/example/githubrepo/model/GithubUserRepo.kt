@@ -6,11 +6,11 @@ import java.util.concurrent.TimeUnit
 
 class GithubUserRepo {
     private val repositories = listOf(
-        User(1234, "Jonny", null),
-        User(456, "Fred", "https://github.com"),
-        User(43, "Anna", null),
-        User(444, "Elise", "https://github.com"),
-        User(907, "John", null),
+        User(1234, "Jonny", null, 0),
+        User(456, "Fred", "https://github.com", 2),
+        User(43, "Anna", null, 0),
+        User(444, "Elise", "https://github.com", 0),
+        User(907, "John", null, 1),
     )
 
     fun getUsers(): List<User> {

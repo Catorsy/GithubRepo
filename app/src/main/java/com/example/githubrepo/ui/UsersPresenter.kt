@@ -16,7 +16,7 @@ import moxy.MvpPresenter
 class UsersPresenter(val userRepo: GithubUserRepo, val router: Router) :
     MvpPresenter<Contract.View>() {
 
-    class UsersListPresenter : UserListPresenter {
+    class UsersListPresenter: UserListPresenter {
         val users = mutableListOf<User>()
         override var itemClickListener: ((UserItemView) -> Unit)? = null
 
@@ -59,7 +59,7 @@ class UsersPresenter(val userRepo: GithubUserRepo, val router: Router) :
     }
 
     private fun loadData() {
-        //новый вариаант с RX
+        //новый вариант с RX
         App.compositeDisposable.add(userRepo.getUsersRx()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({it -> usersListPresenter.users.addAll(it)
@@ -79,7 +79,7 @@ class UsersPresenter(val userRepo: GithubUserRepo, val router: Router) :
     }
 
     override fun onDestroy() {
-        App.compositeDisposable.dispose()
+        App.compositeDisposable.clear()
         super.onDestroy()
     }
 }

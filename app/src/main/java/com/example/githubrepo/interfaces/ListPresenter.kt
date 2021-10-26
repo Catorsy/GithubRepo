@@ -5,7 +5,7 @@ interface ListPresenter<V : ItemView> {
     //unit ничего не возвращает, он как синглтон
     var itemClickListener: ((V) -> Unit)? //при обработке клика получаем от Вью позицию и находим требуемый элемент
 
-    //функция нполнения вью
+    //функция наполнения вью
     fun bindView(view: V)
     fun getCount(): Int
 }

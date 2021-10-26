@@ -3,4 +3,9 @@
     <string name="url">Url</string>
     <string name="id">Id</string>
     <string name="login">Логин</string>
+    <string name="counter_default">0</string>
+    <string name="write_message">Зайдите в профиль и введите сообщение.</string>
+    <string name="write_your_message">Введите своё сообщение</string>
+    <string name="add">Добавить</string>
+    <string name="no_message_yet">Пока нет сообщений</string>
 </resources>

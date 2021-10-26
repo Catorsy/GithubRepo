@@ -14,7 +14,8 @@ class Contract {
     }
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    interface MainView : MvpView
+    interface MainView : MvpView {
+    }
 
     abstract class Presenter: MvpPresenter<View>(){
         // ??? А если делаем на куче интерфейсов, в контракт стоит помещать их?

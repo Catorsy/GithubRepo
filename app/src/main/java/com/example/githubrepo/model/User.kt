@@ -8,4 +8,5 @@ data class User(
     val id: Int,
     val login: String,
     val url: String?,
+    var likes: Int,
 ) : Parcelable
