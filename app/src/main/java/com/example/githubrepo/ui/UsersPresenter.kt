@@ -7,23 +7,25 @@ import com.example.githubrepo.Contract
 import com.example.githubrepo.Screens
 import com.example.githubrepo.interfaces.UserItemView
 import com.example.githubrepo.interfaces.UserListPresenter
-import com.example.githubrepo.model.GithubUserRepo
-import com.example.githubrepo.model.User
+import com.example.githubrepo.retrofit.IGithubUsersRepo
+import com.example.githubrepo.retrofit.UserRetro
 import com.github.terrakok.cicerone.Router
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
 
-class UsersPresenter(val userRepo: GithubUserRepo, val router: Router) :
+class UsersPresenter(val userRepo: IGithubUsersRepo, val router: Router) :
     MvpPresenter<Contract.View>() {
 
     class UsersListPresenter: UserListPresenter {
-        val users = mutableListOf<User>()
+        val users = mutableListOf<UserRetro>()
         override var itemClickListener: ((UserItemView) -> Unit)? = null
 
         override fun bindView(view: UserItemView) {
             val user = users[view.pos]
-            view.setLogin(user.login)
-            user.url?.let { view.setUrl(it) }
+            user.login?.let {
+                view.setLogin(it)
+            }
         }
 
         override fun getCount(): Int {
@@ -41,13 +43,13 @@ class UsersPresenter(val userRepo: GithubUserRepo, val router: Router) :
     }
 
     private fun listen() {
-        //новый вариаант с RX
+        //новый вариант с RX
         App.compositeDisposable.add(
-            userRepo.getUsersRx()
+            userRepo.getUsers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (
                     {it -> usersListPresenter.itemClickListener =
-                        { itemView -> router.navigateTo(Screens.userProfileScreen(it[itemView.pos].id)) }},
+                        { itemView -> router.navigateTo(Screens.userRetroInfo(it[itemView.pos].login)) }},
                     {Log.i(TAG, "У нас случилась ошибка.")},
                         )
         )
@@ -59,8 +61,18 @@ class UsersPresenter(val userRepo: GithubUserRepo, val router: Router) :
     }
 
     private fun loadData() {
+//        App.compositeDisposable.add(userRepo.getUsers()
+//            .observeOn(uiScheduler)
+//            .subscribe({ repos ->
+//                usersListPresenter.users.clear()
+//                usersListPresenter.users.addAll(repos)
+//                viewState.updateList()
+//            },
+//                {Log.i(TAG, "У нас случилась ошибка.")},
+//                ))
+
         //новый вариант с RX
-        App.compositeDisposable.add(userRepo.getUsersRx()
+        App.compositeDisposable.add(userRepo.getUsers()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({it -> usersListPresenter.users.addAll(it)
                 viewState.updateList()},

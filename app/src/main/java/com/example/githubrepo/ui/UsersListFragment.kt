@@ -8,6 +8,9 @@ import com.example.githubrepo.App
 import com.example.githubrepo.Contract
 import com.example.githubrepo.databinding.FragmentUsersListBinding
 import com.example.githubrepo.interfaces.BackButtonListener
+import com.example.githubrepo.retrofit.ApiHolder
+import com.example.githubrepo.retrofit.RetrofitGithubUserRepo
+import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -17,7 +20,8 @@ class UsersListFragment : MvpAppCompatFragment(), Contract.View, BackButtonListe
     }
 
     private var binding: FragmentUsersListBinding? = null
-    private val presenter by moxyPresenter { UsersPresenter(App.userRepo, App.router) }
+    private val presenter by moxyPresenter { UsersPresenter(
+        RetrofitGithubUserRepo(ApiHolder.api), App.router) }
     private lateinit var adapter: UsersRecyclerViewAdapter
 
     override fun onCreateView(

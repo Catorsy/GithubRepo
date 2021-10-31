@@ -20,6 +20,7 @@ class ProfileUserFragment : MvpAppCompatFragment(), ProfileUserView, BackButtonL
 
         fun newInstance(userId: Int) =
             ProfileUserFragment().apply { arguments = bundleOf(MY_USER to userId) }
+        fun newInstance(login: String?) = ProfileUserFragment().apply { arguments = bundleOf(MY_USER to login) }
     }
 
     private val userId: Int? by lazy {
