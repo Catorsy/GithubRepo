@@ -32,7 +32,7 @@ class App : Application() {
             .addConverterFactory(GsonConverterFactory.create(gson)) //преобразует из json в user
             .build()
 
-        //val api = retrofit.create(IDataSource::class.java)
+        val api = retrofit.create(IDataSource::class.java)
     }
 
     val eventBus = EventBus()

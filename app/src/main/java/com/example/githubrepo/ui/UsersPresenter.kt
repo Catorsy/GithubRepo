@@ -26,6 +26,9 @@ class UsersPresenter(val userRepo: IGithubUsersRepo, val router: Router) :
             user.login?.let {
                 view.setLogin(it)
             }
+            user.avatarUrl?.let {
+                view.loadAvatar(it)
+            }
         }
 
         override fun getCount(): Int {
