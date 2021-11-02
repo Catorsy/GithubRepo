@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.fragment.app.Fragment
 import com.example.githubrepo.model.GithubUserRepo
 import com.example.githubrepo.retrofit.IDataSource
+import com.example.githubrepo.retrofit.RetrofitGithubUserRepo
 import com.github.terrakok.cicerone.Cicerone
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder

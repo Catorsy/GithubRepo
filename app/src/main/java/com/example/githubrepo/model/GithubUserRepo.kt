@@ -1,6 +1,7 @@
 package com.example.githubrepo.model
 
 import com.example.githubrepo.App
+import com.example.githubrepo.retrofit.IGithubUsersRepo
 import io.reactivex.Single
 import java.util.concurrent.TimeUnit
 
