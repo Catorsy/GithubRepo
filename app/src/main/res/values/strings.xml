@@ -8,4 +8,5 @@
     <string name="write_your_message">Введите своё сообщение</string>
     <string name="add">Добавить</string>
     <string name="no_message_yet">Пока нет сообщений</string>
+    <string name="type_user">type</string>
 </resources>
