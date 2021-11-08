@@ -3,7 +3,6 @@ package com.example.githubrepo.ui
 import android.content.ContentValues
 import android.util.Log
 import com.example.githubrepo.App
-import com.example.githubrepo.App.Companion.userRepo
 import com.example.githubrepo.interfaces.ProfileUserView
 import com.example.githubrepo.retrofit.IGithubUsersRepo
 import com.github.terrakok.cicerone.Router

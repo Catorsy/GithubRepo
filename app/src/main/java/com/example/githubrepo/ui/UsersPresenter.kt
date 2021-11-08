@@ -10,7 +10,6 @@ import com.example.githubrepo.interfaces.UserListPresenter
 import com.example.githubrepo.retrofit.IGithubUsersRepo
 import com.example.githubrepo.retrofit.UserRetro
 import com.github.terrakok.cicerone.Router
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
 
