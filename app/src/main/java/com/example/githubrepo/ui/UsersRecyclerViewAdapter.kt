@@ -2,14 +2,17 @@ package com.example.githubrepo.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrepo.databinding.UserItemBinding
 import com.example.githubrepo.interfaces.UserItemView
 import com.example.githubrepo.interfaces.UserListPresenter
+import com.example.githubrepo.loadImages.ImageLoaderGlide
 
 //адаптер делаем пассивным, а не активным
 //он не имеет ссылок на данные и делегирует процесс наполнения View в Presenter
-class UsersRecyclerViewAdapter(private val presenter: UserListPresenter) :
+class UsersRecyclerViewAdapter(private val presenter: UserListPresenter,
+                               val imageLoader: ImageLoaderGlide<ImageView>) :
     RecyclerView.Adapter<UsersRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersRecyclerViewAdapter.ViewHolder {
@@ -41,6 +44,10 @@ class UsersRecyclerViewAdapter(private val presenter: UserListPresenter) :
 
         override fun setUrl(text: String) {
             vb.userUrlTextView.text = text
+        }
+
+        override fun loadAvatar(url: String) {
+            imageLoader.loadInto(url, vb.userAvatar)
         }
 
         override var pos: Int = -1

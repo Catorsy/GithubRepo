@@ -8,6 +8,8 @@ import com.example.githubrepo.App
 import com.example.githubrepo.Contract
 import com.example.githubrepo.databinding.FragmentUsersListBinding
 import com.example.githubrepo.interfaces.BackButtonListener
+import com.example.githubrepo.loadImages.GlideImageLoader
+import com.example.githubrepo.retrofit.RetrofitGithubUserRepo
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -17,7 +19,8 @@ class UsersListFragment : MvpAppCompatFragment(), Contract.View, BackButtonListe
     }
 
     private var binding: FragmentUsersListBinding? = null
-    private val presenter by moxyPresenter { UsersPresenter(App.userRepo, App.router) }
+    private val presenter by moxyPresenter { UsersPresenter(
+        RetrofitGithubUserRepo(App.api), App.router) }
     private lateinit var adapter: UsersRecyclerViewAdapter
 
     override fun onCreateView(
@@ -30,7 +33,7 @@ class UsersListFragment : MvpAppCompatFragment(), Contract.View, BackButtonListe
 
 
     override fun init() {
-        adapter = UsersRecyclerViewAdapter(presenter.usersListPresenter)
+        adapter = UsersRecyclerViewAdapter(presenter.usersListPresenter, GlideImageLoader())
         binding?.usersListRecyclerView?.layoutManager = LinearLayoutManager(context)
         binding?.usersListRecyclerView?.adapter = adapter
     }
